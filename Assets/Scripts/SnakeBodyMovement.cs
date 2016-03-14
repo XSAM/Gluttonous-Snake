@@ -13,7 +13,7 @@ public class SnakeBodyMovement : MonoBehaviour
 
     //private Quaternion lastTurn;
     private Quaternion turn;
-    public List<Quaternion> lastTurn;
+    private List<Quaternion> lastTurn;
 
 	
 	// Use this for initialization
@@ -21,6 +21,7 @@ public class SnakeBodyMovement : MonoBehaviour
 	{
         rigidbody = GetComponent<Rigidbody>();
         snakeHeadMovement = GameObject.FindGameObjectWithTag("Head").GetComponent<SnakeHeadMovement>();
+        lastTurn = new List<Quaternion>();
         turn = Quaternion.identity;
         isCoroutine = false;
         startTurn = false;
