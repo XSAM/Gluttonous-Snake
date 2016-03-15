@@ -3,12 +3,12 @@ using System.Collections;
 
 public class SnakeHeadMovement : MonoBehaviour
 {
-    public float speed;
-    public float turnSpeed;
+    public float speed=300f;
+    public float turnSpeed=180f;
 
     private new Rigidbody rigidbody;
     private float horizontal;
-    private float vertical;
+    //private float vertical;
 
     [HideInInspector]
     public Vector3 lastVelocity;
