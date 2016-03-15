@@ -42,5 +42,6 @@ public class SnakeBody : Snake
         {
             Turning(turn);
         }
+        //Debug.Log(lastTurn.Count);
     }
 }

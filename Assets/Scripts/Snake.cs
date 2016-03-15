@@ -10,14 +10,20 @@ public class Snake:MonoBehaviour
     
     public Snake lastSnakeMember;
 
-    public Snake() {}
-
     //链表的连接，这是一个倒写的链表，链表头是蛇尾，链表尾是蛇头，每次从链表头插入
-    public Snake(Snake lastSnakeMember)
+    public virtual void Init(Snake lastSnakeMember)
+    {
+        this.lastSnakeMember=lastSnakeMember;
+    }
+
+    public Snake GetLastSnakeMember()
+    {
+        return this.lastSnakeMember;
+    }
+
+    public void SetLastSnakeMember(Snake lastSnakeMember)
     {
         this.lastSnakeMember = lastSnakeMember;
-        velocity =new Vector3(0f,0f,0f);
-        //turn=Quaternion.identity;
     }
     
 	
@@ -25,7 +31,8 @@ public class Snake:MonoBehaviour
     protected virtual void Start() 
 	{
         rigidbody = GetComponent<Rigidbody>();
-        turn = Quaternion.identity;
+        turn = transform.rotation;
+        velocity = new Vector3(0f, 0f, 0f);
 	}
 	
     protected void Moving(Vector3 movement)
