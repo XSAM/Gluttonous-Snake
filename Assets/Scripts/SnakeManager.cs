@@ -36,7 +36,7 @@ public class SnakeManager : MonoBehaviour
     {
         lastSnakeMember=linkTop.GetLastSnakeMember();
         position = lastSnakeMember.transform.up * -1.2f + lastSnakeMember.transform.position;
-        Debug.Log(lastSnakeMember.transform.up);
+        //Debug.Log(lastSnakeMember.transform.up);
         instanceTemp = Instantiate(snakeBody, position, Quaternion.Euler(90,lastSnakeMember.transform.rotation.eulerAngles.y, 0)) as GameObject;
         snakeTemp = instanceTemp.GetComponent<Snake>();
         snakeTemp.Init(linkTop.GetLastSnakeMember());
