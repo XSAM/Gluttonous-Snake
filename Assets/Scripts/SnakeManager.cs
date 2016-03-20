@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class SnakeManager : MonoBehaviour 
@@ -9,6 +10,10 @@ public class SnakeManager : MonoBehaviour
     public int snakeBodyCount=6;
     public float distance = -1.2f;
     public bool addSnakeBody = false;
+
+    public Text text;
+    public Text gameover;
+    public int foodScore = 20;
 
     private Snake linkTop;
     private GameObject instanceTemp;
@@ -22,6 +27,8 @@ public class SnakeManager : MonoBehaviour
     private bool isSpawned;
     private Vector3 foodPosition;
     private RaycastHit hit;
+
+    private int score;
 	
     void Awake()
     {
@@ -34,6 +41,8 @@ public class SnakeManager : MonoBehaviour
         linkTop.Init(snakeTemp);
         for (int i = 0; i < snakeBodyCount; ++i)
             AddSnakeBody();
+
+        score = 0;
     }
 
     public void AddSnakeBody()
@@ -62,11 +71,20 @@ public class SnakeManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+        if (SnakeHead.isGameOver)
+        {
+            //如果游戏结束，停止Update();
+            gameover.enabled = true;
+            return;
+        }
+
+        text.text ="Score: " + score;
 		if(addSnakeBody)
         {
             AddSnakeBody();
             addSnakeBody = false;
         }
+
         if(!isSpawned)
         {
             if(SpawnFood())
@@ -84,6 +102,7 @@ public class SnakeManager : MonoBehaviour
 
         if(SnakeHead.isAddSnakeBody)
         {
+            score += foodScore;
             AddSnakeBody();
             SnakeHead.isAddSnakeBody = false;
         }
