@@ -5,6 +5,7 @@ public class SnakeManager : MonoBehaviour
 {
     public GameObject snakeHead;
     public GameObject snakeBody;
+    public int snakeBodyCount=6;
     public float distance = -1.2f;
     public bool addSnakeBody = false;
 
@@ -23,16 +24,11 @@ public class SnakeManager : MonoBehaviour
 
         linkTop=new Snake();
         linkTop.Init(snakeTemp);
-        for (int i = 0; i < 6; ++i)
+        for (int i = 0; i < snakeBodyCount; ++i)
             AddSnakeBody();
     }
-	// Use this for initialization
-	void Start () 
-	{
 
-	}
-
-    void AddSnakeBody()
+    public void AddSnakeBody()
     {
         lastSnakeMember=linkTop.GetLastSnakeMember();
         position = lastSnakeMember.transform.up * -1.2f + lastSnakeMember.transform.position;

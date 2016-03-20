@@ -20,6 +20,12 @@ public class SnakeBody : Snake
 
     void FixedUpdate()
     {
+        if(SnakeHead.isGameOver)
+        {
+            rigidbody.isKinematic = true;
+            rigidbody.detectCollisions = false;
+            return;
+        }
         Moving(SnakeHead.lastestVelocity);
 
         if(!isCoroutine)
@@ -42,6 +48,8 @@ public class SnakeBody : Snake
         {
             Turning(turn);
         }
+        Matrix4x4 a=transform.localToWorldMatrix;
         //Debug.Log(lastTurn.Count);
     }
+
 }
