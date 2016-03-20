@@ -60,7 +60,7 @@ public class SnakeManager : MonoBehaviour
     public bool SpawnFood()
     {
         foodPosition.Set(Random.Range(-24, 24), 0.5f, Random.Range(-24, 24));
-        if(Physics.SphereCast(foodPosition,0.7f,Vector3.zero,out hit))
+        if(Physics.SphereCast(foodPosition,2f,Vector3.zero,out hit))
         {
             return false;
         }
